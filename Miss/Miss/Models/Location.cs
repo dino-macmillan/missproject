@@ -31,5 +31,7 @@ namespace Miss.Models
         //[RegularExpression(@"^(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)$")]
         public double Long { get; set; }
 
+        public double Distance { get; set; }
+
     }
 }

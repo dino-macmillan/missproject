@@ -1,4 +1,5 @@
-﻿using Miss.DataService;
+﻿using Geolocation;
+using Miss.DataService;
 using Miss.Models;
 using System;
 using System.Collections.Generic;
@@ -117,14 +118,36 @@ namespace Miss.Controllers
             double.TryParse(lat, out latitude);
             double.TryParse(lng, out longitude);
 
-            var data = _locDataService.GetData().Where(x => x.Lat == latitude && x.Long == longitude);
+            //var data = _locDataService.GetData().Where(x => x.Lat == latitude && x.Long == longitude);
+
+            List<Location> buses = _locDataService.GetData();
+
+            try
+            {
+                foreach (Location bus in buses)
+                {
+                    bus.Distance = GeoCalculator.GetDistance(latitude, longitude, bus.Lat, bus.Long, 1, DistanceUnit.Miles);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+
+            Location closestBus = buses.OrderBy(x => x.Distance).FirstOrDefault();
 
             return Json(new
             {
                 Msg = "",
-                Data = data
+                Data = closestBus
             });
         }
+
+        //bool isWithinRange(double Lat, double Lng, double busLat, double busLng, double range)
+        //{
+        //   return (GeoCalculator.GetDistance(34.0675918, -118.3977091, 34.076234, -118.395314, 1, DistanceUnit.Miles) < range);
+        //}
 
     }
 }
