@@ -1,44 +1,374 @@
 ﻿<!DOCTYPE html>
-<html>
+<html class="" lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Miss Bus | Hack Day 2017</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <!-- CSS -->
+    <link href="~/Content/css/topper.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" type="text/css" />
+    <script src="~/Content/Scripts/libs/modernizr.min.js" type="text/javascript"></script>
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    <!-- Header Container -->
+    <div class="head-container">
+
+        <div class="top-header">
+            <ul>
+                <li class="home-cta">
+                    <a href="http://www.macmillan.org.uk/">Home</a>
+                </li>
+                <li class="help-cta">
+                    <a href="http://www.macmillan.org.uk/information-and-support/audience/index.html">How can we help you today?</a>
+                </li>
+                <li class="community-cta">
+                    <a href="http://community.macmillan.org.uk/">Online Community</a>
+                </li>
+
+                <li class="login">
+                    <div class="js-hover">
+                        <a href="https://my.macmillan.org.uk/Account/LogOn?returnurl=https%3a%2f%2fvolunteering.macmillan.org.uk%2f%3fsource%3dlogin">Login</a>
+                        <a href="https://my.macmillan.org.uk/Profile/Index" class="js-my-macmillan-cta my-macmillan-cta">My Macmillan<span></span></a>
+                        <div class="login-box">
+                            <a href="https://my.macmillan.org.uk/Account/Register?src=sso&returnurl=https%3a%2f%2fvolunteering.macmillan.org.uk%2f" class="cta-button sso">Create Account</a>
+                            <a href="https://my.macmillan.org.uk/Profile/SavedPages" class="cta-button sso">Saved pages</a>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="main-header">
+            <header role="banner">
+                <div class="layout">
+                    <a href="http://www.macmillan.org.uk/" class="logo" title="Home - Macmillan Cancer Support"><img src="https://topper.macmillan.org.uk/assets/images/9-17322Logo@2x.png" alt="Home - Macmillan Cancer Support"></a>
+                    <div class="group">
+                        <nav role="navigation">
+                            <ul>
+                                <li class="mobile-nav toggle-nav"><a href=""><span>Menu</span></a></li>
+                                <li class="active"><a href="http://www.macmillan.org.uk/information-and-support/index.html" title="" role="link"><span>Information and support</span></a></li>
+                                <li class=""><a href="http://www.macmillan.org.uk/get-involved/all-ways-to-help.html" title="All ways to get involved" role="link"><span>Get involved</span></a></li>
+                                <li class=""><a href="http://www.macmillan.org.uk/in-your-area/choose-location.html" title="" role="link"><span>In your area </span></a></li>
+                                <li class=""><a href="http://www.macmillan.org.uk/AboutUs/" title="" role="link"><span>About us</span></a></li>
+                            </ul>
+                        </nav>
+
+                        <div class="header-search">
+                            <div class="search">
+                                <form class="search-form" action="https://www.macmillan.org.uk/Search/SearchResults.aspx" method="get">
+                                    <label for="query">Search</label>
+                                    <input id="query" name="query" data-value="Search" value="" class="ui-autocomplete-input default-value search-form-input" type="text" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" placeholder="Search">
+                                    <button type="submit" class="primary cta-button search-form-submit" title="Search"></button>
+                                </form>
+                            </div>
+                            <div class="donate-cta">
+                                <a href="http://www.macmillan.org.uk/donate" title="Donate"><span>Donate</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+    <!-- /# Header Container -->
+    <!-- Mobile Header -->
+    <div class="mobile-head">
+        <div class="group">
+            <a href="http://www.macmillan.org.uk/" class="logo" title="home"><img src="https://topper.macmillan.org.uk/assets/images/9-113845Site Logo (mobile).png" alt="Home - Macmillan Cancer Support"></a>
+            <nav>
+                <ul class="nav">
+                    <li class="toggle-nav" aria-haspopup="true" aria-owns="menu" data-attr="menu">
+                        <a href="#" class=""><span>Menu</span></a>
+                    </li>
+                    <li class="toggle-search" aria-haspopup="true" aria-owns="searchForm" data-attr="search">
+                        <a href="#" class=""><span>Search</span></a>
+                    </li>
+                    <li class="toggle-my-mac" aria-haspopup="true" aria-owns="myMacmillan" data-attr="my-macmillan">
+                        <a href="#" class=""><span>My</span></a>
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+            </nav>
+        </div>
+    </div>
+
+    <div class="mactop-slider">
+        <nav class="menu">
+            <ul>
+                <li><a href="http://www.macmillan.org.uk/information-and-support/index.html" title="" role="link"><span>Information and support</span></a></li>
+                <li><a href="http://www.macmillan.org.uk/get-involved/all-ways-to-help.html" title="All ways to get involved" role="link"><span>Get involved</span></a></li>
+                <li><a href="http://www.macmillan.org.uk/in-your-area/choose-location.html" title="" role="link"><span>In your area </span></a></li>
+                <li><a href="http://www.macmillan.org.uk/AboutUs/" title="" role="link"><span>About us</span></a></li>
+                <li><a href="http://community.macmillan.org.uk/" title="" role="link"><span>Online community</span></a></li>
+                <li><a href="http://www.macmillan.org.uk/Home.aspx" title="" role="link"><span>Home</span></a></li>
+            </ul>
+            <a class="donate-cta" href="http://www.macmillan.org.uk/donate" title="Donate">Donate</a>
+        </nav>
+        <div class="search">
+            <div class="search-form">
+                <label for="query-mobile">Search</label>
+                <input name="query-mobile" id="query-mobile" value="" placeholder="Search" type="text" class="mobile-search-form-input" autocomplete="off" role="textbox">
+                <button type="submit" class="cta-button mobile-search-form-submit"></button>
+            </div>
+        </div>
+
+        <div class="my-macmillan">
+            <p class="heading-logged-out">My Macmillan</p>
+            <ul class="my-macmillan-cta-list">
+                <li class="my-macmillan-cta">
+                    <a class="my-macmillan-cta-link" href="https://my.macmillan.org.uk/Account/LogOn?returnurl=https%3a%2f%2fvolunteering.macmillan.org.uk%2f%3fsource%3dlogin" role="link">Login</a>
+                </li>
+                <li class="my-macmillan-cta">
+                    <a class="my-macmillan-cta-link" href="https://my.macmillan.org.uk/Account/Register?src=sso&returnurl=https%3a%2f%2fvolunteering.macmillan.org.uk%2f" role="link">Join now</a>
+                </li>
+            </ul>
+            <div class="divider">
+                <p><a href="https://my.macmillan.org.uk/Profile/SavedPages" class="my-macmillan-link" role="link">My saved pages</a></p>
+            </div>
+        </div>
+
+    </div>
+    <!-- /# Mobile Header -->
+    <!-- Sub navigation-->
+    <div class="js-sub-navigation sub-navigation">
+        <ul class="js-sub-navigation-list sub-navigation-list sub-navigation-wrapper">
+
+            <li class="level-one" tabindex="0">
+                <span class="sub-navigation-indicator ">Understanding</span>
+                <ul class="sub-ul">
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">Understanding overview</a>
+                    </li>
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">What is cancer?</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level-one" tabindex="0">
+                <span class="sub-navigation-indicator ">Diagnosing</span>
+                <ul class="sub-ul">
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">Understanding overview</a>
+                    </li>
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">What is cancer?</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level-one" tabindex="0">
+                <span class="sub-navigation-indicator ">Organising</span>
+                <ul class="sub-ul">
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">Understanding overview</a>
+                    </li>
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">What is cancer?</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level-one" tabindex="0">
+                <span class="sub-navigation-indicator ">Treating</span>
+                <ul class="sub-ul">
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">Understanding overview</a>
+                    </li>
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">What is cancer?</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level-one" tabindex="0">
+                <span class="sub-navigation-indicator ">Coping</span>
+                <ul class="sub-ul">
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">Understanding overview</a>
+                    </li>
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">What is cancer?</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level-one" tabindex="0">
+                <span class="sub-navigation-indicator ">Resources</span>
+                <ul class="sub-ul">
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">Understanding overview</a>
+                    </li>
+                    <li class="level-two">
+                        <a href="#" role="link" class="" tabindex="-1">What is cancer?</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level-one more-items js-more-items" tabindex="0">
+                <span class="sub-navigation-indicator">More</span>
+                <ul class="sub-ul"></ul>
+            </li>
+        </ul>
+    </div>
+    <!-- /# Sub navigation-->
+
+    <div class="container body-content">
+
+        
+
+
+
+
+    </div>
+    <div class="container mb40 mbm20">
+        <div class="row">
+            <div class="large-12 medium-12 small-12">
+                <div class="breadcrumb mb20 mt0">
+                    <nav>
+                        <ol>
+                            <li><a href="http://www.macmillan.org.uk">Home</a></li>
+                            <li>></li>
+                            <li>Information and support</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 medium-12 small-12">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Manage Locations", "Index", "Location")</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-8 small-12">
+                @RenderBody()
+            </div>
+            <div class="large-4 aside medium-4 hide-for-small-only mt20">
+                <div class="support-line-pod right">
+                    <span class="icon icon-phone"></span>
+                    <div class="top-wrapper">
+                        <h4>Need to talk? Call us free*</h4>
+                    </div>
+                    <span class="number">0808 808 00 00</span>
+                    <span class="times">Monday to Friday, 9am-5pm</span>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
+
+
+
+
+    <div class="container">
+        <div class="row mbm40">
+
+            <div class="small-6 show-for-small-only mt40">
+                <div class="support-line-pod">
+                    <span class="icon icon-phone"></span>
+                    <div class="top-wrapper">
+                        <h4>Need to talk? Call us free*</h4>
+                    </div>
+                    <span class="number">0808 808 00 00</span>
+                    <span class="times">Monday to Friday, 9am-5pm</span>
+                </div>
+            </div>
+
+
+            <div class="small-6 show-for-small-only">
+                <a class="js-page-scroll page-scroll jump-up-btn" href="#">
+                    <span><i class="hidden">Go to Top</i></span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-nav">
+            <ul>
+                <li><a href="http://www.macmillan.org.uk/">Home</a></li>
+                <li><a href="http://www.macmillan.org.uk/information-and-support/index.html">Information and support</a></li>
+                <li><a href="http://www.macmillan.org.uk/get-involved/all-ways-to-help.html">Get involved</a></li>
+                <li><a href="http://www.macmillan.org.uk/in-your-area/choose-location.html">In your area</a></li>
+                <li><a href="http://www.macmillan.org.uk/AboutUs/">About us</a></li>
+                <li><a href="http://community.macmillan.org.uk">Online community</a></li>
+                <li><a href="http://www.macmillan.org.uk/donate" class="donate-cta">Donate</a></li>
+            </ul>
+        </div>
+        <div class="wrapper">
+            <div class="mobile-social-links">
+                <h2 class="footer-follow">Follow Us</h2>
+                <ul class="social-links">
+                    <li><a href="https://www.facebook.com/macmillancancer" title="Facebook" class="facebook"></a></li>
+                    <li><a href="https://twitter.com/macmillancancer" title="Twitter" class="twitter"></a></li>
+                    <li><a href="http://www.youtube.com/user/macmillancancer" title="YouTube" class="youtube"></a></li>
+                    <li><a href="http://www.pinterest.com/macmillancancer" title="Pinterest" class="pinterest"></a></li>
+                </ul>
+            </div>
+
+            <div class="column-one">
+                <a href="http://www.macmillan.org.uk/" class="footer-logo" role="link" title="Home - Macmillan Cancer Support"><img src="https://topper.macmillan.org.uk/assets/images/Macmillan-Cancer-Support-green@2x.png" alt="Home - Macmillan Cancer Support"></a>
+
+            </div>
+
+            <div class="column-two">
+                <h2>About this site</h2>
+                <ul>
+                    <li><a href="http://www.macmillan.org.uk/information-and-support/understanding-cancer/about-our-website.html">About our website</a></li>
+                    <li><a href="http://www.macmillan.org.uk/TermsandConditions/Howweusecookies.aspx">How we use cookies</a></li>
+                    <li><a href="http://www.macmillan.org.uk/TermsandConditions/TermsAndConditions.aspx">Terms and conditions</a></li>
+                    <li><a href="http://www.macmillan.org.uk/TermsandConditions/PrivacyPolicy.aspx">Privacy policy</a></li>
+                    <li><a href="http://www.macmillan.org.uk/TermsandConditions/Accessibility.aspx">Accessibility</a></li>
+                    <li><a href="http://www.macmillan.org.uk/donate/">Make a donation</a></li>
+                </ul>
+            </div>
+
+            <div class="column-three">
+                <h2>Macmillan sites</h2>
+                <ul>
+                    <li><a href="http://be.macmillan.org.uk/be/default.aspx">be.Macmillan</a></li>
+                    <li><a href="http://community.macmillan.org.uk/">Community</a></li>
+                    <li><a href="http://shop.macmillan.org.uk/">Macmillan shop</a></li>
+                    <li><a href="http://learnzone.org.uk/">Learn zone</a></li>
+                    <li><a href="http://www.macmillan.org.uk/Aboutus/WorkingForMacmillan/Working_for_Macmillan.aspx">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="column-four">
+                <div class="mobile-wrapper">
+                    <h2>Get in touch</h2>
+                    <p>If you have any questions about Macmillan, or would like to talk to someone about cancer, we have a team of experts who can help.</p>
+                    <a title="Click here to contact us" href="http://www.macmillan.org.uk/AboutUs/ContactUs/ContactUs.aspx">Contact Us</a>
+                </div>
+                <div class="mobile-wrapper">
+                    <h2 class="footer-follow">Follow Us</h2>
+                    <ul class="social-links">
+                        <li><a href="https://www.facebook.com/macmillancancer" title="Facebook" class="facebook"></a></li>
+                        <li><a href="https://twitter.com/macmillancancer" title="Twitter" class="twitter"></a></li>
+                        <li><a href="http://www.youtube.com/user/macmillancancer" title="YouTube" class="youtube"></a></li>
+                        <li><a href="http://www.pinterest.com/macmillancancer" title="Pinterest" class="pinterest"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <div class="copyright">
+                <em>© Macmillan Cancer Support 2017</em>
+                <p>© Macmillan Cancer Support, registered charity in England and Wales (261017), Scotland (SC039907) and the Isle of Man (604). A company limited by guarantee, registered in England and Wales company number 2400969. Isle of Man company number 4694F. Registered office: 89 Albert Embankment, London SE1 7UQ.</p>
+            </div>
+        </div>
+    </div>
+    <!-- /# Footer -->
+
+
+    <script src="~/Content/Scripts/libs/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="~/Content/Scripts/libs/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="~/Content/Scripts/output.js" type="text/javascript"></script>
+    <script src="~/Content/Scripts/site_header.min.js"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
