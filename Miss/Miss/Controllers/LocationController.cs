@@ -101,10 +101,8 @@ namespace Miss.Controllers
             }
         }
 
-        public JsonResult GetBusLocation(string lat , string lng)
+        public JsonResult GetBusLocation(string lat, string lng)
         {
-
-
             if (string.IsNullOrEmpty(lat) && string.IsNullOrEmpty(lng))
             {
 
@@ -122,7 +120,7 @@ namespace Miss.Controllers
 
             //var data = _locDataService.GetData().Where(x => x.Lat == latitude && x.Long == longitude);
 
-            List<Location> buses = _locDataService.GetData();
+            List<Location> buses = _locDataService.GetData().Where(x => x.Date > DateTime.Now).ToList();
 
             try
             {
@@ -139,13 +137,13 @@ namespace Miss.Controllers
 
             Location closestBus = buses.OrderBy(x => x.Distance).FirstOrDefault();
 
+            closestBus.ArrivingInDays = (closestBus.Date - DateTime.Today).Days;
+
             return Json(new
             {
                 Msg = "",
                 Data = closestBus
             });
-
-
         }
 
         //bool isWithinRange(double Lat, double Lng, double busLat, double busLng, double range)
@@ -155,3 +153,4 @@ namespace Miss.Controllers
 
     }
 }
+

@@ -211,18 +211,10 @@
     </div>
     <!-- /# Sub navigation-->
 
-    <div class="container body-content">
-
-        
-
-
-
-
-    </div>
     <div class="container mb40 mbm20">
         <div class="row">
             <div class="large-12 medium-12 small-12">
-                <div class="breadcrumb mb20 mt0">
+                <div class="breadcrumb mb20 mtm10 mt20">
                     <nav>
                         <ol>
                             <li><a href="http://www.macmillan.org.uk">Home</a></li>
@@ -233,13 +225,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="large-12 medium-12 small-12">
-                <ul>
-                    <li>@Html.ActionLink("Home", "Index", "Home")  |  @Html.ActionLink("Manage Locations", "Index", "Location")</li>
-                </ul>
-            </div>
-        </div>
+       
         <div class="row">
             <div class="large-8 small-12">
                 @RenderBody()
@@ -253,6 +239,13 @@
                     <span class="number">0808 808 00 00</span>
                     <span class="times">Monday to Friday, 9am-5pm</span>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 medium-12 small-12">
+                <ul>
+                    <li>@Html.ActionLink("Manage Locations", "Index", "Location")</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -287,7 +280,11 @@
     </div>
     <!-- Footer -->
     <div class="bus" id="bus">
-        <div class="bus-details"></div>
+        <div class="bus-wrapper">
+            <div class="bus-details"></div>
+            <a class="bus-cta" href="https://www.macmillan.org.uk/aboutus/contactus/mobileinformationcentrelocations.aspx">More info <span class="icon icon-chevron-up"></span></a>
+            <button class="bus-close" id="close"><span class="icon icon-cross"></span></button>
+        </div>
     </div>
     <div class="footer">
         <div class="footer-nav">
@@ -381,10 +378,23 @@
             if ($('#bus').length > 0) {
                 var $bus = $('#bus');
                 var $details = $('#bus').find('.bus-details');
+                var $closeBtn = $('#close');
+
+                getLocation();
 
                 $bus.on('click', function () {
-                    getLocation();
-                    $(this).animate({right: '20px'});
+                    $bus.addClass('bus-active');
+                    $bus.css('right', '10px');
+                });
+
+                $closeBtn.on('click', function (e) {
+
+                    e.preventDefault();
+                    $bus.animate({ right: '-240px' },{duration: 400}, function () {
+                        $bus.removeClass('bus-active');
+                   
+                        console.log('foo')
+                    });
                 });
 
                 function getLocation() {
@@ -396,26 +406,27 @@
                 }
 
                 function showPosition(position) {
-                    //var lat = String(position.coords.latitude);
-                    var lat = "53.483959";
-                    //var lng = String(position.coords.longitude);
-                    var lng = "-2.244644";
+                    var lat = String(position.coords.latitude);
+                    //var lat = "53.483959";
+                    var lng = String(position.coords.longitude);
+                    //var lng = "-2.244644";
                     //$details.html(lat + ' ' + lng);
                     var location = { lat: lat, lng: lng };
                     getBusLocation(location);
                 }
             }
 
-            
+
 
             function getBusLocation(location) {
-                console.log(location);
-
                 $.ajax({
-                    url: "Location/GetBusLocation?lat="+location.lat + "&lng="+location.lng,
+                    url: "Location/GetBusLocation?lat=" + location.lat + "&lng=" + location.lng,
                     type: 'POST',
                     success: function (result) {
                         console.log(result);
+                        $details.html("Don't MISS the bus, visiting " +
+                            "<span class='data'>" + result.Data.Address + "</span>" +
+                            " in " + "<span class='data'>" + result.Data.ArrivingInDays + "</span>" + " days");
                     },
                     error: function (xhr) {
                         console.log(xhr.status);
@@ -423,8 +434,9 @@
                 })
 
             }
-            
+
         });
     </script>
 </body>
+
 </html>

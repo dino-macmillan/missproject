@@ -1349,4 +1349,20 @@ body {
     }
 }
 
-/*# sourceMappingURL=styles.css.map */
+.bus {
+  background:url('../images/missbus.png');
+  display: block;
+  height: 90px;
+  position: fixed;
+  right: -220px;
+  top: 200px;
+  width: 270px;
+
+}
+
+.bus .bus-details {
+  color: #fff;
+  font-size: 16px;
+  margin: 10px auto 0;
+  width: 200px;
+}

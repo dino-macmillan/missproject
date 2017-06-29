@@ -12,6 +12,8 @@
 </head>
 
 <body>
+
+
     <!-- Header Container -->
     <div class="head-container">
 
@@ -234,8 +236,7 @@
         <div class="row">
             <div class="large-12 medium-12 small-12">
                 <ul>
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Manage Locations", "Index", "Location")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")  |  @Html.ActionLink("Manage Locations", "Index", "Location")</li>
                 </ul>
             </div>
         </div>
@@ -285,6 +286,9 @@
         </div>
     </div>
     <!-- Footer -->
+    <div class="bus" id="bus">
+        <div class="bus-details"></div>
+    </div>
     <div class="footer">
         <div class="footer-nav">
             <ul>
@@ -370,5 +374,57 @@
     <script src="~/Content/Scripts/site_header.min.js"></script>
 
     @RenderSection("scripts", required: false)
+
+    <script>
+        $(function () {
+
+            if ($('#bus').length > 0) {
+                var $bus = $('#bus');
+                var $details = $('#bus').find('.bus-details');
+
+                $bus.on('click', function () {
+                    getLocation();
+                    $(this).animate({right: '20px'});
+                });
+
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                    } else {
+                        console.log('geolocation not supported');
+                    }
+                }
+
+                function showPosition(position) {
+                    //var lat = String(position.coords.latitude);
+                    var lat = "53.483959";
+                    //var lng = String(position.coords.longitude);
+                    var lng = "-2.244644";
+                    //$details.html(lat + ' ' + lng);
+                    var location = { lat: lat, lng: lng };
+                    getBusLocation(location);
+                }
+            }
+
+            
+
+            function getBusLocation(location) {
+                console.log(location);
+
+                $.ajax({
+                    url: "Location/GetBusLocation?lat="+location.lat + "&lng="+location.lng,
+                    type: 'POST',
+                    success: function (result) {
+                        console.log(result);
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.status);
+                    }
+                })
+
+            }
+            
+        });
+    </script>
 </body>
 </html>
