@@ -21,13 +21,13 @@ namespace Miss.Controllers
         // GET: Location
         public ActionResult Index()
         {
-            return View(_locDataService.GetData().OrderByDescending(x=>x.Date));
+            return View(_locDataService.GetData().OrderByDescending(x => x.Date));
         }
 
         // GET: Location/Details/5
         public ActionResult Details(int id)
         {
-            return View(_locDataService.GetData().Where(x=> x.Id == id).Single());
+            return View(_locDataService.GetData().Where(x => x.Id == id).Single());
         }
 
         // GET: Location/Create
@@ -41,23 +41,16 @@ namespace Miss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Location location)
         {
-            try
-            {
-                List<Location> locs = _locDataService.GetData();
+            List<Location> locs = _locDataService.GetData();
 
-                //Set Id manually
-                location.Id = (locs.OrderBy(x=>x.Id).Single().Id + 1);
+            //Set Id manually
+            location.Id = (locs.OrderByDescending(x => x.Id).First().Id + 1);
 
-                locs.Add(location);
+            locs.Add(location);
 
-                _locDataService.SaveData(locs);
+            _locDataService.SaveData(locs);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         // GET: Location/Edit/5
@@ -94,10 +87,10 @@ namespace Miss.Controllers
         public ActionResult Delete(int id)
         {
             try
-            { 
-            List<Location> locs = _locDataService.GetData();
+            {
+                List<Location> locs = _locDataService.GetData();
 
-            _locDataService.SaveData(locs.Where(x => x.Id != id).ToList());
+                _locDataService.SaveData(locs.Where(x => x.Id != id).ToList());
 
                 return RedirectToAction("Index");
             }
