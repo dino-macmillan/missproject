@@ -396,20 +396,24 @@
                 }
 
                 function showPosition(position) {
-                    var lat = String(position.coords.latitude);
-                    var lng = String(position.coords.longitude);
-                    $details.html(lat + ' ' + lng);
-
-                    // getBusLocation(lat, lng);
+                    //var lat = String(position.coords.latitude);
+                    var lat = "53.483959";
+                    //var lng = String(position.coords.longitude);
+                    var lng = "-2.244644";
+                    //$details.html(lat + ' ' + lng);
+                    var location = { lat: lat, lng: lng };
+                    getBusLocation(location);
                 }
             }
 
             
 
-            function getBusLocation() {
+            function getBusLocation(location) {
+                console.log(location);
+
                 $.ajax({
-                    url: "Location/GetBusLocation",
-                    type: 'GET',
+                    url: "Location/GetBusLocation?lat="+location.lat + "&lng="+location.lng,
+                    type: 'POST',
                     success: function (result) {
                         console.log(result);
                     },

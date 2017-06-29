@@ -101,8 +101,10 @@ namespace Miss.Controllers
             }
         }
 
-        public JsonResult GetBusLocation(string lat, string lng)
+        public JsonResult GetBusLocation(string lat , string lng)
         {
+
+
             if (string.IsNullOrEmpty(lat) && string.IsNullOrEmpty(lng))
             {
 
@@ -142,6 +144,8 @@ namespace Miss.Controllers
                 Msg = "",
                 Data = closestBus
             });
+
+
         }
 
         //bool isWithinRange(double Lat, double Lng, double busLat, double busLng, double range)
