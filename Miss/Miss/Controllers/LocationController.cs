@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Miss.Controllers
@@ -96,7 +97,39 @@ namespace Miss.Controllers
 
             _locDataService.SaveData(locs.Where(x => x.Id != id).ToList());
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
+
+        public JsonResult GetBusLocation(string lat, string lng)
+        {
+            if (string.IsNullOrEmpty(lat) && string.IsNullOrEmpty(lng))
+            {
+
+                return Json(new
+                {
+                    Msg = "Not data found",
+                    Data = ""
+                });
+            }
+
+            double latitude, longitude;
+
+            double.TryParse(lat, out latitude);
+            double.TryParse(lng, out longitude);
+
+            var data = _locDataService.GetData().Where(x => x.Lat == latitude && x.Long == longitude);
+
+            return Json(new
+            {
+                Msg = "",
+                Data = data
+            });
+        }
+
     }
 }
