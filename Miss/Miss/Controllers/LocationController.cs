@@ -37,6 +37,7 @@ namespace Miss.Controllers
 
         // POST: Location/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Location collection)
         {
             try
@@ -54,16 +55,24 @@ namespace Miss.Controllers
         // GET: Location/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(_locDataService.GetData().Where(x => x.Id == id));
         }
 
         // POST: Location/Edit/5
         [HttpPost]
-        public ActionResult Edit(Location model)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Location location)
         {
             try
             {
-                // TODO: Add update logic here
+                List<Location> locs = _locDataService.GetData();
+
+                // Remove the old item
+                Location item = locs.Single(x => x.Id == location.Id);
+                locs.Remove(item);
+                locs.Add(location);
+
+                _locDataService.SaveData(locs);
 
                 return RedirectToAction("Index");
             }
@@ -81,6 +90,7 @@ namespace Miss.Controllers
 
         // POST: Location/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
