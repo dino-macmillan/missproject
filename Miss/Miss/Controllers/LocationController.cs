@@ -93,6 +93,7 @@ namespace Miss.Controllers
         // GET: Location/Delete/5
         public ActionResult Delete(int id)
         {
+            try { 
             List<Location> locs = _locDataService.GetData();
 
             _locDataService.SaveData(locs.Where(x => x.Id != id).ToList());
