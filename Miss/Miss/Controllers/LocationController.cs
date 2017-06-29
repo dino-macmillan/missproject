@@ -20,7 +20,7 @@ namespace Miss.Controllers
         // GET: Location
         public ActionResult Index()
         {
-            return View(_locDataService.GetData());
+            return View(_locDataService.GetData().OrderByDescending(x=>x.Date));
         }
 
         // GET: Location/Details/5
@@ -32,17 +32,24 @@ namespace Miss.Controllers
         // GET: Location/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new Location());
         }
 
         // POST: Location/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Location collection)
+        public ActionResult Create(Location location)
         {
             try
             {
-                // TODO: Add insert logic here
+                List<Location> locs = _locDataService.GetData();
+
+                //Set Id manually
+                location.Id = (locs.OrderBy(x=>x.Id).Single().Id + 1);
+
+                locs.Add(location);
+
+                _locDataService.SaveData(locs);
 
                 return RedirectToAction("Index");
             }
@@ -85,24 +92,11 @@ namespace Miss.Controllers
         // GET: Location/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
+            List<Location> locs = _locDataService.GetData();
 
-        // POST: Location/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+            _locDataService.SaveData(locs.Where(x => x.Id != id).ToList());
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }
