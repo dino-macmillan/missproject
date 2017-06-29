@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Miss.DataService;
+using Miss.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,9 +12,22 @@ namespace Miss.Controllers
 {
     public class HomeController : Controller
     {
+        IDataService _locDataService;
+
+        public HomeController()
+        {
+            _locDataService = new LocationDataService();
+        }
+
+        
+
         public ActionResult Index()
         {
-            return View();
+           
+            var model = _locDataService.GetData();
+            _locDataService.SaveData(model);
+
+            return View(model);
         }
 
         public ActionResult About()
@@ -26,5 +43,6 @@ namespace Miss.Controllers
 
             return View();
         }
+
     }
 }
