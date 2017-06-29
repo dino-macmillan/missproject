@@ -29,5 +29,7 @@ namespace Miss.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Miss.Models.Location> Locations { get; set; }
     }
 }

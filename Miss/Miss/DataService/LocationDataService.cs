@@ -48,7 +48,7 @@ namespace Miss.DataService
 
         private List<Location> GetList()
         {
-            return new List<Location> { new Location { Date= "27", Month = "June", Year= "2017",Address="Emirates stadium" , Postcode="N77AJ" , Lat =51.5541 , Long = -01.10878}, new Location { Date = "28", Month = "June", Year = "2017", Address = "Emirates stadium", Postcode = "N77AJ", Lat = 51.5541, Long = -01.10878 } };
+            return new List<Location> { new Location {Id=1, Date= new DateTime(2017, 06, 27), Address="Emirates stadium" , Postcode="N77AJ" , Lat =51.5541 , Long = -01.10878}, new Location {Id=2, Date = new DateTime(2017, 06, 28), Address = "Emirates stadium", Postcode = "N77AJ", Lat = 51.5541, Long = -01.10878 } };
         }
     }
 }
