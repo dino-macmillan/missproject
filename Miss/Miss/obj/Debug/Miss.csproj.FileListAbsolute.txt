@@ -161,4 +161,4 @@ C:\Projects\HackDays\HackDay-4\Miss\missproject\Miss\Miss\bin\Microsoft.Owin.Sec
 C:\Projects\HackDays\HackDay-4\Miss\missproject\Miss\Miss\obj\Debug\Miss.csprojResolveAssemblyReference.cache
 C:\Projects\HackDays\HackDay-4\Miss\missproject\Miss\Miss\obj\Debug\Miss.dll
 C:\Projects\HackDays\HackDay-4\Miss\missproject\Miss\Miss\obj\Debug\Miss.pdb
-C:\GitSolutions\MissProject\missproject\Miss\Miss\obj\Debug\Miss.csprojResolveAssemblyReference.cache
+C:\GitSolutions\MissProject\MissProject\Miss\Miss\obj\Debug\Miss.csprojResolveAssemblyReference.cache
