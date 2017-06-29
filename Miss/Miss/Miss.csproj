@@ -229,6 +229,7 @@
     <Content Include="Content\css\fonts\macmillan_headline_02_12-webfont.svg" />
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\css\topper.css" />
+    <Content Include="Content\images\missbus.png" />
     <Content Include="Content\images\sprite-social-desktop-tablet%402x.png" />
     <Content Include="Content\images\sprite-ui-icons-all-devices%402x.png" />
     <Content Include="Content\Scripts\libs\jquery-1.11.3.min.js" />
