@@ -26,7 +26,7 @@ namespace Miss.Controllers
         // GET: Location/Details/5
         public ActionResult Details(int id)
         {
-            return View(_locDataService.GetData().Where(x=> x.Id == id));
+            return View(_locDataService.GetData().Where(x=> x.Id == id).Single());
         }
 
         // GET: Location/Create
@@ -55,7 +55,7 @@ namespace Miss.Controllers
         // GET: Location/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(_locDataService.GetData().Where(x => x.Id == id));
+            return View(_locDataService.GetData().Where(x => x.Id == id).Single());
         }
 
         // POST: Location/Edit/5
