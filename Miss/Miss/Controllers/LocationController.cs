@@ -32,7 +32,7 @@ namespace Miss.Controllers
         // GET: Location/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new Location());
         }
 
         // POST: Location/Create
