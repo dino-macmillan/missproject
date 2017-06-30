@@ -422,9 +422,17 @@
                     type: 'POST',
                     success: function (result) {
                         console.log(result);
+
+                        var days;
+
+                        if (result.Data.ArrivingInDays > 1)
+                            days = "days"
+                        else
+                            days = "day"
+
                         $details.html("Don't MISS the bus, visiting " +
                             "<span class='data'>" + result.Data.Address + "</span>" +
-                            " in " + "<span class='data'>" + result.Data.ArrivingInDays + "</span>" + " day(s)");
+                            " in " + "<span class='data'>" + result.Data.ArrivingInDays + "</span>" + days);
                     },
                     error: function (xhr) {
                         console.log(xhr.status);
