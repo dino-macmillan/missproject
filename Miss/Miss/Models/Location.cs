@@ -37,9 +37,5 @@ namespace Miss.Models
 
         public int ArrivingInDays { get; set; }
 
-        public string DateFormat { get { return Date.ToString(); } }
-
-        public int ArrivingInDays { get; set; }
-
     }
 }
