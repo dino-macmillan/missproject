@@ -23,11 +23,7 @@ namespace Miss.Controllers
 
         public ActionResult Index()
         {
-           
-            var model = _locDataService.GetData();
-            _locDataService.SaveData(model);
-
-            return View(model);
+            return View();
         }
 
         public ActionResult About()

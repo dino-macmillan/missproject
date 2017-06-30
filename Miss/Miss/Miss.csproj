@@ -215,6 +215,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Data.txt" />
     <Content Include="Content\css\fonts\25173A_0_0.svg" />
     <Content Include="Content\css\fonts\25173A_1_0.svg" />
     <Content Include="Content\css\fonts\294099f3-8d00-4676-afc5-5e9d8d43ad69.svg" />
@@ -345,9 +346,7 @@
     <Content Include="Views\Location\Details.cshtml" />
     <Content Include="Views\Location\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
