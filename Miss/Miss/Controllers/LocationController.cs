@@ -120,7 +120,7 @@ namespace Miss.Controllers
 
             //var data = _locDataService.GetData().Where(x => x.Lat == latitude && x.Long == longitude);
 
-            List<Location> buses = _locDataService.GetData().Where(x=> x.Date > DateTime.Now).ToList();
+            List<Location> buses = _locDataService.GetData().Where(x => x.Date > DateTime.Now).ToList();
 
             try
             {
@@ -153,3 +153,4 @@ namespace Miss.Controllers
 
     }
 }
+
