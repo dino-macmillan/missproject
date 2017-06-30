@@ -1355,15 +1355,24 @@ body {
   height: 119px;
   position: fixed;
   right: -240px;
-  top: 200px;
+  top: 450px;
   width: 300px;
-  transition: all linear .5s
+  transition: all linear .5s;
 
 }
 
 
+.bus .trigger {
+width: 60px;
+height: 120px;
+position: absolute;
+left:0;
+top:-10px;
+}
+
 .bus.bus-active {
     right: 10px;
+
 }
 .bus .bus-details {
 color: #fff;

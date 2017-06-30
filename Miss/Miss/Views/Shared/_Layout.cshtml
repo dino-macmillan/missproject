@@ -281,6 +281,7 @@
     <!-- Footer -->
     <div class="bus" id="bus">
         <div class="bus-wrapper">
+            <div class="trigger" id="trigger"></div>
             <div class="bus-details"></div>
             <a class="bus-cta" href="https://www.macmillan.org.uk/aboutus/contactus/mobileinformationcentrelocations.aspx">More info <span class="icon icon-chevron-up"></span></a>
             <button class="bus-close" id="close"><span class="icon icon-cross"></span></button>
@@ -379,22 +380,19 @@
                 var $bus = $('#bus');
                 var $details = $('#bus').find('.bus-details');
                 var $closeBtn = $('#close');
+                var $trigger = $('#trigger');
 
                 getLocation();
 
-                $bus.on('click', function () {
+                $trigger.on('click', function () {
+                    $(this).hide();
                     $bus.addClass('bus-active');
-                    $bus.css('right', '10px');
                 });
 
                 $closeBtn.on('click', function (e) {
-
                     e.preventDefault();
-                    $bus.animate({ right: '-240px' },{duration: 400}, function () {
-                        $bus.removeClass('bus-active');
-                   
-                        console.log('foo')
-                    });
+                    $trigger.show();
+                    $bus.removeClass('bus-active');
                 });
 
                 function getLocation() {
@@ -410,8 +408,8 @@
                     //var lat = "53.483959";
                     var lng = String(position.coords.longitude);
                     //var lng = "-2.244644";
-                    //$details.html(lat + ' ' + lng);
                     var location = { lat: lat, lng: lng };
+                    console.log(location);
                     getBusLocation(location);
                 }
             }
